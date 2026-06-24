@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,7 +12,7 @@
     body {
       min-height: 100vh;
       background: #f5f6fa;
-    }    
+    }
 
     .sidebar {
       width: 240px;
@@ -56,18 +57,25 @@
     .card {
       border: none;
       border-radius: 14px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     }
   </style>
 </head>
+
 <body>
 
   <!-- Sidebar -->
   <div class="sidebar">
     <h4 class="mb-4">Mock Menu</h4>
 
-    <a class="menu-item active" onclick="showMenu('menuA', this)">Menu A</a>
-    <a class="menu-item" onclick="showMenu('menuB', this)">Menu B</a>
+    <!-- <a class="menu-item active" onclick="showMenu('menuA', this)">Rule Group</a> -->
+    <a class="menu-item active" data-menu="ruleGroup" onclick="showMenu('ruleGroupList', this)">
+      Rule Group
+    </a>
+    <!-- <a class="menu-item" onclick="showMenu('menuB', this)">Rule</a> -->
+    <a class="menu-item" data-menu="ruleB" onclick="showMenu('ruleList', this)">
+      Rule
+    </a>
     <a class="menu-item" onclick="showMenu('menuC', this)">Menu C</a>
   </div>
 
@@ -75,33 +83,247 @@
   <div class="content">
 
     <!-- Menu A -->
-    <div id="menuA" class="page-section active">
+    <!-- Daftar Rule Group -->
+    <div id="ruleGroupList" class="page-section active">
       <div class="card p-4">
-        <h4 class="mb-4">Menu A Form</h4>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="mb-0">Rule Group</h4>
+
+          <button class="btn btn-primary" onclick="showMenu('ruleGroupForm', this)">
+            + Rule Group
+          </button>
+        </div>
+
+        <table class="table table-bordered align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>No</th>
+              <th>Rule Group</th>
+              <th>Keterangan</th>
+              <th width="160">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>CIF</td>
+              <td>Kategori Rule Audit CIF</td>
+              <td>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#actionModal">
+                  Edit
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+    <!-- <div id="list-ruleGroup" class="page-section">
+      <div class="card p-4">
+        <h4 class="mb-4">Rule Group</h4>
+
+        <table class="table table-bordered align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>No</th>
+              <th>Rule Group</th>
+              <th>Keterangan</th>
+              <th width="160">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>CIF</td>
+              <td>Kategori Rule Audit CIF</td>
+              <td>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#actionModal">
+                  Edit
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>DEP</td>
+              <td>Kategori Rule Audit DEP</td>
+              <td>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#actionModal">
+                  Edit
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div> -->
+
+    <!-- Tambah Rule Group baru -->
+    <div id="ruleGroupForm" class="page-section">
+      <div class="card p-4">
+
+        <h4 class="mb-4">Tambah Rule Group</h4>
 
         <div class="mb-3">
-          <label class="form-label">Nama Rule</label>
-          <input type="text" class="form-control" placeholder="Contoh: Rule Duplicate CIF">
+          <label class="form-label">Nama Rule Group</label>
+          <input type="text" class="form-control" placeholder="">
         </div>
 
         <div class="mb-3">
-          <label class="form-label">Kode Rule</label>
-          <input type="text" class="form-control" placeholder="Contoh: R001">
+          <label class="form-label">Keterangan</label>
+          <textarea class="form-control" rows="3"></textarea>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button class="btn btn-secondary" onclick="showMenu('ruleGroupList', document.querySelector('[data-menu=\"
+            ruleGroup\"]'))">
+            Kembali
+          </button>
+
+          <button class="btn btn-primary">Simpan</button>
+        </div>
+
+      </div>
+    </div>
+    <!-- <div id="menuA" class="page-section active">
+      <div class="card p-4">
+        <h4 class="mb-4">Rule Group</h4>
+
+        <div class="mb-3">
+          <label class="form-label">Nama Rule Group</label>
+          <input type="text" class="form-control" placeholder="CIF">
         </div>
 
         <div class="mb-3">
-          <label class="form-label">Deskripsi</label>
-          <textarea class="form-control" rows="3" placeholder="Masukkan deskripsi rule"></textarea>
+          <label class="form-label">Keterangan</label>
+          <textarea class="form-control" rows="3" placeholder="Kategori Rule Audit CIF"></textarea>
         </div>
 
         <button class="btn btn-primary">Simpan</button>
       </div>
-    </div>
+    </div> -->
 
     <!-- Menu B -->
-    <div id="menuB" class="page-section">
+    <!-- Daftar Rule Group -->
+    <div id="ruleList" class="page-section">
       <div class="card p-4">
-        <h4 class="mb-4">Menu B List</h4>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="mb-0">Rule Group</h4>
+
+          <button class="btn btn-primary" onclick="showMenu('ruleForm', document.querySelector('[data-menu=ruleB]'))">
+            + Rule Group
+          </button>
+        </div>
+
+        <table class="table table-bordered align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>No</th>
+              <th>Rule Group</th>
+              <th>ID Rule</th>
+              <th>Keterangan Rule</th>
+              <th>SQL</th>
+              <th>Jadwal</th>
+              <th>Tanggal</th>
+              <th>Dimensi</th>
+              <th width="160">Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>CIF - Kategori Rule Audit CIF</td>
+              <td>CIF-001</td>
+              <td>NIK yang sama digunakan pada > CIF</td>
+              <td>
+                SELECT
+                b.IDNBR,
+                COUNT(*) AS JUMLAH_PENGGUNAAN
+                FROM [CBS.BKT.20260331].[dbo].[MST_CIF] a
+                LEFT JOIN [CBS.BKT.20260331].[dbo].[MST_CIFPERSNL] b
+                ON a.CIFID = b.CIFID
+                WHERE b.IDNBR IS NOT NULL
+                GROUP BY b.IDNBR
+                HAVING COUNT(*) > 1
+                ORDER BY COUNT(*) DESC
+              </td>
+              <td>Tiap Hari / Hari Kerja/ Tgl Tertentu</td>
+              <td></td>
+              <td>explicit</td>
+              <td>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#actionModal">
+                  Edit
+                </button>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+
+      </div>
+    </div>
+
+    <!-- Tambah Rule baru -->
+    <div id="ruleForm" class="page-section">
+      <div class="card p-4">
+
+        <h4 class="mb-4">Tambah Rule</h4>
+
+        <div class="mb-3">
+          <label class="form-label">Rule Group</label>
+          <input type="text" class="form-control" placeholder="">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">ID Rule</label>
+          <input type="text" class="form-control" placeholder="">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Keterangan Rule</label>
+          <input type="text" class="form-control" placeholder="">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">SQL</label>
+          <textarea class="form-control" rows="3"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Schedule</label>
+          <input type="text" class="form-control" placeholder="">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Tanggal</label>
+          <input type="text" class="form-control" placeholder="">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Dimensi</label>
+          <input type="text" class="form-control" placeholder="">
+        </div>
+
+        <div class="d-flex gap-2">
+
+          <button class="btn btn-secondary" onclick="showMenu('ruleList', document.querySelector('[data-menu=ruleB]'))">
+            Kembali
+          </button>
+
+          <button class="btn btn-primary">
+            Simpan
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+    <!-- <div id="menuB" class="page-section">
+      <div class="card p-4">
+        <h4 class="mb-4">Rule</h4>
 
         <table class="table table-bordered align-middle">
           <thead class="table-light">
@@ -142,7 +364,7 @@
           </tbody>
         </table>
       </div>
-    </div>
+    </div> -->
 
     <!-- Menu C -->
     <div id="menuC" class="page-section">
@@ -209,4 +431,5 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>
