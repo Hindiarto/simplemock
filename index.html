@@ -82,7 +82,7 @@
 
     <a class="menu-item" onclick="showMenu('ruleTestRun', this)">Test Run Rule Audit</a>
     <a class="menu-item" onclick="showMenu('parameterEkstrakData', this)">Parameter Database Staging</a>
-    
+
 
   </div>
 
@@ -117,7 +117,17 @@
               <td>CIF</td>
               <td>Kategori Rule Audit CIF</td>
               <td>
-                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#actionModal">
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#actionModalRuleGroup">
+                  Edit
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>DEP</td>
+              <td>Kategori Rule Audit DEP</td>
+              <td>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#actionModalRuleGroup">
                   Edit
                 </button>
               </td>
@@ -212,15 +222,15 @@
     </div> -->
 
     <!-- Menu B -->
-    <!-- Daftar Rule Group -->
+    <!-- Daftar Rule -->
     <div id="ruleList" class="page-section">
       <div class="card p-4">
 
         <div class="d-flex justify-content-between align-items-center mb-3">
-          <h4 class="mb-0">Rule Group</h4>
+          <h4 class="mb-0">Rule</h4>
 
           <button class="btn btn-primary" onclick="showMenu('ruleForm', document.querySelector('[data-menu=ruleB]'))">
-            + Rule Group
+            + Rule
           </button>
         </div>
 
@@ -231,10 +241,10 @@
               <th>Rule Group</th>
               <th>ID Rule</th>
               <th>Keterangan Rule</th>
-              <th>SQL</th>
+              <!-- <th>SQL</th> -->
               <th>Jadwal</th>
               <th>Tanggal</th>
-              <th>Dimensi</th>
+              <!-- <th>Dimensi</th> -->
               <th width="160">Action</th>
             </tr>
           </thead>
@@ -244,8 +254,8 @@
               <td>1</td>
               <td>CIF - Kategori Rule Audit CIF</td>
               <td>CIF-001</td>
-              <td>NIK yang sama digunakan pada > CIF</td>
-              <td>
+              <td>NIK yang sama digunakan pada >1 CIF</td>
+              <!-- <td>
                 SELECT
                 b.IDNBR,
                 COUNT(*) AS JUMLAH_PENGGUNAAN
@@ -256,12 +266,48 @@
                 GROUP BY b.IDNBR
                 HAVING COUNT(*) > 1
                 ORDER BY COUNT(*) DESC
-              </td>
-              <td>Tiap Hari / Hari Kerja/ Tgl Tertentu</td>
-              <td></td>
-              <td>explicit</td>
+              </td> -->
+              <td>Tiap Hari</td>
+              <td>-</td>
+              <!-- <td>explicit</td> -->
               <td>
-                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#actionModal">
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#actionModalRule">
+                  Edit
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>CIF - Kategori Rule Audit CIF</td>
+              <td>CIF-002</td>
+              <td>NO HP yang sama digunakan pada >1 CIF</td>
+              <!-- <td>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut fugiat voluptatem rerum minima ullam
+                provident.
+              </td> -->
+              <td>Hari Kerja</td>
+              <td>-</td>
+              <!-- <td>explicit</td> -->
+              <td>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#actionModalRule">
+                  Edit
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>DEP - Kategori Rule Audit DEP</td>
+              <td>DEP-001</td>
+              <td>Melebihi bunga penjaminan LPS</td>
+              <!-- <td>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut fugiat voluptatem rerum minima ullam
+                provident.
+              </td> -->
+              <td>Tanggal Tertentu</td>
+              <td>24 Juni 2026</td>
+              <!-- <td>explicit</td> -->
+              <td>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#actionModalRule">
                   Edit
                 </button>
               </td>
@@ -299,20 +345,22 @@
           <textarea class="form-control" rows="3"></textarea>
         </div>
 
-        <div class="mb-3">
-          <label class="form-label">Schedule</label>
-          <input type="text" class="form-control" placeholder="">
-        </div>
+        <label for="schedule_type">Schedule</label>
+        <select id="schedule_type" class="form-control">
+          <option value="daily">Tiap Hari</option>
+          <option value="workday">Hari Kerja</option>
+          <option value="custom">Tanggal Tertentu</option>
+        </select>
 
-        <div class="mb-3">
-          <label class="form-label">Tanggal</label>
-          <input type="text" class="form-control" placeholder="">
-        </div>
+        <br>
 
-        <div class="mb-3">
+        <label for="schedule_date">Tanggal</label>
+        <input type="date" id="schedule_date" class="form-control" disabled>
+
+        <!-- <div class="mb-3">
           <label class="form-label">Dimensi</label>
           <input type="text" class="form-control" placeholder="">
-        </div>
+        </div> -->
 
         <div class="d-flex gap-2">
 
@@ -373,8 +421,6 @@
       </div>
     </div> -->
 
-
-
     <!-- Menu C -->
     <div id="ruleTestRun" class="page-section">
       <div class="card p-4">
@@ -399,13 +445,14 @@
               <td>2022-06-22 / 02:29:29</td>
               <td>Sukses</td>
               <td>
-                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" onclick="showMenu('testRunSuccess', this)">
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal"
+                  onclick="showMenu('testRunSuccess', this)">
                   Test Run
                 </button>
               </td>
             </tr>
 
-             <tr>
+            <tr>
               <td>2</td>
               <td>DEP-001</td>
               <td>Melebihi bunga penjaminan LPS</td>
@@ -425,101 +472,100 @@
 
     <!-- CONTOH TEST RUN SUKSES-->
     <div id="testRunSuccess" class="page-section container py-4">
-        <div class="card shadow-sm mx-auto" style="max-width: 800px;"></div>
-            <div class="card-body p-0">
-                <!-- Header -->
-                <div class="text-center border-bottom py-3">
-                    <h2 class="fw-bold mb-0">
-                        Hasil Test Run Rule Audit
-                    </h2>
-                </div>
-                <!-- Detail -->
-                <table class="table table-bordered mb-0">
-                    <tbody>
-                        <tr>
-                            <th style="width:35%">Rule-ID</th>
-                            <td>CIF-001</td>
-                        </tr>
-                        <tr>
-                            <th>Status Test Run</th>
-                            <td>
-                                <span class="badge bg-success">
-                                    Sukses
-                                </span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+      <div class="card shadow-sm mx-auto" style="max-width: 800px;"></div>
+      <div class="card-body p-0">
+        <!-- Header -->
+        <div class="text-center border-bottom py-3">
+          <h2 class="fw-bold mb-0">
+            Hasil Test Run Rule Audit
+          </h2>
+        </div>
+        <!-- Detail -->
+        <table class="table table-bordered mb-0">
+          <tbody>
+            <tr>
+              <th style="width:35%">Rule-ID</th>
+              <td>CIF-001</td>
+            </tr>
+            <tr>
+              <th>Status Test Run</th>
+              <td>
+                <span class="badge bg-success">
+                  Sukses
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- CONTOH TEST RUN GAGAL-->
     <div id="testRunFailed" class="page-section container py-4">
 
-        <div class="card shadow-sm mx-auto" style="max-width:900px;">
+      <div class="card shadow-sm mx-auto" style="max-width:900px;">
 
-            <div class="card-body p-0">
+        <div class="card-body p-0">
 
-                <div class="text-center border-bottom py-3">
-                    <h2 class="fw-bold mb-0">
-                        Hasil Test Run Rule Audit
-                    </h2>
-                </div>
+          <div class="text-center border-bottom py-3">
+            <h2 class="fw-bold mb-0">
+              Hasil Test Run Rule Audit
+            </h2>
+          </div>
 
-                <table class="table table-bordered mb-0 align-middle">
-                    <tbody>
+          <table class="table table-bordered mb-0 align-middle">
+            <tbody>
 
-                        <tr>
-                            <th style="width:35%">Rule-ID</th>
-                            <td>CIF-001</td>
-                        </tr>
+              <tr>
+                <th style="width:35%">Rule-ID</th>
+                <td>CIF-001</td>
+              </tr>
 
-                        <tr>
-                            <th>Status Test Run</th>
-                            <td>
-                                <span class="badge bg-danger">Gagal</span>
-                            </td>
-                        </tr>
+              <tr>
+                <th>Status Test Run</th>
+                <td>
+                  <span class="badge bg-danger">Gagal</span>
+                </td>
+              </tr>
 
-                        <tr>
-                            <th>Database Not Found</th>
-                            <td>[CBS.BKT.20260331]</td>
-                        </tr>
+              <tr>
+                <th>Database Not Found</th>
+                <td>[CBS.BKT.20260331]</td>
+              </tr>
 
-                        <tr>
-                            <th>Table Not Found</th>
-                            <td>
-                                <div>[CBS.BKT.20260331] - MST_CIF</div>
-                                <div>[CBS.BKT.20260331] - MST_CIF_PERSNL</div>
-                            </td>
-                        </tr>
+              <tr>
+                <th>Table Not Found</th>
+                <td>
+                  <div>[CBS.BKT.20260331] - MST_CIF</div>
+                  <div>[CBS.BKT.20260331] - MST_CIF_PERSNL</div>
+                </td>
+              </tr>
 
-                        <tr>
-                            <th>Field Not Found</th>
-                            <td>
-                                <div class="mb-3">
-                                    <strong>[CBS.BKT.20260331] - MST_CIF</strong><br>
-                                    IDNNBR, CSTTYPE
-                                </div>
+              <tr>
+                <th>Field Not Found</th>
+                <td>
+                  <div class="mb-3">
+                    <strong>[CBS.BKT.20260331] - MST_CIF</strong><br>
+                    IDNNBR, CSTTYPE
+                  </div>
 
-                                <div>
-                                    <strong>[CBS.BKT.20260331] - MST_CIF_PERSNL</strong><br>
-                                    HP, EMAIL
-                                </div>
-                            </td>
-                        </tr>
+                  <div>
+                    <strong>[CBS.BKT.20260331] - MST_CIF_PERSNL</strong><br>
+                    HP, EMAIL
+                  </div>
+                </td>
+              </tr>
 
-                        <tr>
-                            <th>Create Table Statement</th>
-                            <td>
-                                <button class="btn btn-sm btn-outline-primary"
-                                        data-bs-toggle="collapse"
-                                        data-bs-target="#createTableStatement">
-                                    Show SQL
-                                </button>
+              <tr>
+                <th>Create Table Statement</th>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
+                    data-bs-target="#createTableStatement">
+                    Show SQL
+                  </button>
 
-                                <div class="collapse mt-3" id="createTableStatement">
-    <pre class="bg-light p-3 border rounded mb-0"><code>CREATE TABLE [dbo].[MST_CIF](
+                  <div class="collapse mt-3" id="createTableStatement">
+                    <pre class="bg-light p-3 border rounded mb-0"><code>CREATE TABLE [dbo].[MST_CIF](
         [CIFID] [varchar](10) NOT NULL,
         [AOID] [varchar](10) NOT NULL,
         [DTJOIN] [date] NOT NULL,
@@ -529,37 +575,35 @@
         [CIFTYPE] [int] NOT NULL,
         [COUNTRYID] [char](2) NOT NULL
     ) ON [PRIMARY]</code></pre>
-                                </div>
-                            </td>
-                        </tr>
+                  </div>
+                </td>
+              </tr>
 
-                        <tr>
-                            <th>Alter Table Statement</th>
-                            <td>
-                                <button class="btn btn-sm btn-outline-primary"
-                                        data-bs-toggle="collapse"
-                                        data-bs-target="#alterTableStatement">
-                                    Show SQL
-                                </button>
+              <tr>
+                <th>Alter Table Statement</th>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
+                    data-bs-target="#alterTableStatement">
+                    Show SQL
+                  </button>
 
-                                <div class="collapse mt-3" id="alterTableStatement">
-    <pre class="bg-light p-3 border rounded mb-0"><code>ALTER TABLE [dbo].[MST_CIF]
+                  <div class="collapse mt-3" id="alterTableStatement">
+                    <pre class="bg-light p-3 border rounded mb-0"><code>ALTER TABLE [dbo].[MST_CIF]
     ADD [TEST] VARCHAR(50) NULL;</code></pre>
-                                </div>
-                            </td>
-                        </tr>
+                  </div>
+                </td>
+              </tr>
 
-                        <tr>
-                            <th>Output Table Create Statement</th>
-                            <td>
-                                <button class="btn btn-sm btn-outline-primary"
-                                        data-bs-toggle="collapse"
-                                        data-bs-target="#outputCreateTableStatement">
-                                    Show SQL
-                                </button>
+              <tr>
+                <th>Output Table Create Statement</th>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
+                    data-bs-target="#outputCreateTableStatement">
+                    Show SQL
+                  </button>
 
-                                <div class="collapse mt-3" id="outputCreateTableStatement">
-    <pre class="bg-light p-3 border rounded mb-0"><code>CREATE TABLE [dbo].[MST_CIF_OUTPUT](
+                  <div class="collapse mt-3" id="outputCreateTableStatement">
+                    <pre class="bg-light p-3 border rounded mb-0"><code>CREATE TABLE [dbo].[MST_CIF_OUTPUT](
         [CIFID] [varchar](10) NOT NULL,
         [AOID] [varchar](10) NOT NULL,
         [DTJOIN] [date] NOT NULL,
@@ -569,23 +613,25 @@
         [CIFTYPE] [int] NOT NULL,
         [COUNTRYID] [char](2) NOT NULL
     ) ON [PRIMARY]</code></pre>
-                                </div>
-                            </td>
-                        </tr>
+                  </div>
+                </td>
+              </tr>
 
-                    </tbody>
-                </table>
-
-            </div>
+            </tbody>
+          </table>
 
         </div>
 
+      </div>
+
     </div>
-    
 
 
- <!-- PARAMETER DATABASE STAGING-->
- <div id="parameterEkstrakData" class="page-section">
+
+                        
+
+    <!-- PARAMETER DATABASE STAGING-->
+    <div id="parameterEkstrakData" class="page-section">
       <div class="card p-4">
         <h4 class="mb-4">Parameter Database Staging</h4>
 
@@ -608,7 +654,8 @@
               <td>2022-06-22 / 02:29:29</td>
               <td>2022-06-22 / 02:35:01</td>
               <td>
-                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" onclick="showMenu('contohDetailEkstrakData', this)">
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal"
+                  onclick="showMenu('contohDetailEkstrakData', this)">
                   Detail
                 </button>
               </td>
@@ -620,7 +667,8 @@
               <td>2022-06-22 / 02:30:01</td>
               <td>2022-06-22 / 02:32:29</td>
               <td>
-                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" onclick="showMenu('contohDetailEkstrakData', this)">
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal"
+                  onclick="showMenu('contohDetailEkstrakData', this)">
                   Detail
                 </button>
               </td>
@@ -634,184 +682,245 @@
     <!-- CONTOH DETAIL PARAMETER EKSTRAK DATA-->
     <div id="contohDetailEkstrakData" class="page-section container py-4">
 
-        <div class="card shadow-sm mx-auto" style="max-width:900px;">
+      <div class="card shadow-sm mx-auto" style="max-width:900px;">
 
-            <div class="card-body p-0">
+        <div class="card-body p-0">
 
-                <div class="text-center border-bottom py-3">
-                    <h2 class="fw-bold mb-0">
-                        Parameter Database Staging
-                    </h2>
-                </div>
-
-                <form>
-                    <table class="table table-bordered mb-0 align-middle">
-                        <tbody>
-
-                            <tr>
-                                <th style="width:35%">Database</th>
-                                <td>
-                                    <input type="text" class="form-control" value="CBS.BKT.20260321">
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th>Table</th>
-                                <td>
-                                    <input type="text" class="form-control" value="MST_CIF">
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th>Schedule</th>
-                                <td>
-                                    <select class="form-select">
-                                        <option value="">-- Pilih Schedule --</option>
-                                        <option value="daily">Tiap Hari</option>
-                                        <option value="workday">Hari Kerja</option>
-                                        <option value="specific_date">Tanggal Tertentu</option>
-                                    </select>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th>Tanggal</th>
-                                <td>
-                                    <input type="date" class="form-control">
-                                    <small class="text-muted">
-                                        Diisi jika Schedule adalah Tanggal Tertentu.
-                                    </small>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th>Metode Copy</th>
-                                <td>
-                                    <select class="form-select">
-                                        <option value="">-- Pilih Metode Copy --</option>
-                                        <option value="replace">Replace</option>
-                                        <option value="last_copied_date">Last Copied Date</option>
-                                        <option value="detect_change">Detect Change</option>
-                                    </select>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th>Last Date Copied</th>
-                                <td>
-                                    <input type="date" class="form-control">
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th>Last Date Changed</th>
-                                <td>
-                                    <input type="date" class="form-control">
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th>Field to Detect Changed</th>
-                                <td>
-                                    <select class="form-select">
-                                        <option value="">-- Pilih Field --</option>
-                                        <option value="DTUPD">DTUPD</option>
-                                        <option value="CREATED_AT">CREATED_AT</option>
-                                        <option value="UPDATED_AT">UPDATED_AT</option>
-                                        <option value="LAST_MODIFIED">LAST_MODIFIED</option>
-                                    </select>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th>Unique Field</th>
-                                <td>
-                                    <select class="form-select">
-                                        <option value="">-- Pilih Unique Field --</option>
-                                        <option value="CIFID">CIFID</option>
-                                        <option value="IDNBR">IDNBR</option>
-                                        <option value="ACCNBR">ACCNBR</option>
-                                        <option value="CUSTOMER_ID">CUSTOMER_ID</option>
-                                    </select>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td colspan="2" class="text-center p-3">
-                                    <button type="submit" class="btn btn-primary px-5 fw-bold">
-                                        SUBMIT
-                                    </button>
-                                </td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </form>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-
-
-
-  <!-- Modal Popup -->
-  <div class="modal fade" id="actionModal" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <h5 class="modal-title">Form Action</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-
-        <div class="modal-body">
-          <div class="mb-3">
-            <label class="form-label">Input 1</label>
-            <input type="text" class="form-control" placeholder="Masukkan input 1">
+          <div class="text-center border-bottom py-3">
+            <h2 class="fw-bold mb-0">
+              Parameter Database Staging
+            </h2>
           </div>
 
-          <div class="mb-3">
-            <label class="form-label">Input 2</label>
-            <input type="text" class="form-control" placeholder="Masukkan input 2">
-          </div>
+          <form>
+            <table class="table table-bordered mb-0 align-middle">
+              <tbody>
 
-          <div class="mb-3">
-            <label class="form-label">Input 3</label>
-            <input type="text" class="form-control" placeholder="Masukkan input 3">
-          </div>
-        </div>
+                <tr>
+                  <th style="width:35%">Database</th>
+                  <td>
+                    <input type="text" class="form-control" value="CBS.BKT.20260321">
+                  </td>
+                </tr>
 
-        <div class="modal-footer">
-          <button class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-          <button class="btn btn-primary">Simpan</button>
+                <tr>
+                  <th>Table</th>
+                  <td>
+                    <input type="text" class="form-control" value="MST_CIF">
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>Schedule</th>
+                  <td>
+                    <select class="form-select">
+                      <option value="">-- Pilih Schedule --</option>
+                      <option value="daily">Tiap Hari</option>
+                      <option value="workday">Hari Kerja</option>
+                      <option value="specific_date">Tanggal Tertentu</option>
+                    </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>Tanggal</th>
+                  <td>
+                    <input type="date" class="form-control">
+                    <small class="text-muted">
+                      Diisi jika Schedule adalah Tanggal Tertentu.
+                    </small>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>Metode Copy</th>
+                  <td>
+                    <select class="form-select">
+                      <option value="">-- Pilih Metode Copy --</option>
+                      <option value="replace">Replace</option>
+                      <option value="last_copied_date">Last Copied Date</option>
+                      <option value="detect_change">Detect Change</option>
+                    </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>Last Date Copied</th>
+                  <td>
+                    <input type="date" class="form-control">
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>Last Date Changed</th>
+                  <td>
+                    <input type="date" class="form-control">
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>Field to Detect Changed</th>
+                  <td>
+                    <select class="form-select">
+                      <option value="">-- Pilih Field --</option>
+                      <option value="DTUPD">DTUPD</option>
+                      <option value="CREATED_AT">CREATED_AT</option>
+                      <option value="UPDATED_AT">UPDATED_AT</option>
+                      <option value="LAST_MODIFIED">LAST_MODIFIED</option>
+                    </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>Unique Field</th>
+                  <td>
+                    <select class="form-select">
+                      <option value="">-- Pilih Unique Field --</option>
+                      <option value="CIFID">CIFID</option>
+                      <option value="IDNBR">IDNBR</option>
+                      <option value="ACCNBR">ACCNBR</option>
+                      <option value="CUSTOMER_ID">CUSTOMER_ID</option>
+                    </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td colspan="2" class="text-center p-3">
+                    <button type="submit" class="btn btn-primary px-5 fw-bold">
+                      SUBMIT
+                    </button>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </form>
+
         </div>
 
       </div>
+
     </div>
-  </div>
 
-  <script>
-    function showMenu(menuId, element) {
-      document.querySelectorAll('.page-section').forEach(section => {
-        section.classList.remove('active');
+
+
+
+
+
+    <!-- Modal Popup -->
+    <div class="modal fade" id="actionModalRuleGroup" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h5 class="modal-title">Form Edit Rule Group</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">Rule Group</label>
+              <input type="text" class="form-control" placeholder="">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Keterangan</label>
+              <input type="text" class="form-control" placeholder="">
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            <button class="btn btn-primary">Simpan</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Popup -->
+    <div class="modal fade" id="actionModalRule" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h5 class="modal-title">Form Edit Rule</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">Rule Group</label>
+              <input type="text" class="form-control" placeholder="">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">ID Rule</label>
+              <input type="text" class="form-control" placeholder="">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Keterangan</label>
+              <input type="text" class="form-control" placeholder="">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">SQL</label>
+              <textarea class="form-control" rows="3"></textarea>
+            </div>
+
+            <label for="schedule_type">Jadwal</label>
+            <select id="schedule_type" class="form-control">
+              <option value="daily">Tiap Hari</option>
+              <option value="workday">Hari Kerja</option>
+              <option value="custom">Tanggal Tertentu</option>
+            </select>
+
+            <br>
+
+            <label for="schedule_date">Tanggal</label>
+            <input type="date" id="schedule_date" class="form-control" disabled>
+
+          </div>
+
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            <button class="btn btn-primary">Simpan</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function showMenu(menuId, element) {
+        document.querySelectorAll('.page-section').forEach(section => {
+          section.classList.remove('active');
+        });
+
+        document.getElementById(menuId).classList.add('active');
+
+        document.querySelectorAll('.menu-item').forEach(item => {
+          item.classList.remove('active');
+        });
+
+        element.classList.add('active');
+      }
+
+      const scheduleType = document.getElementById('schedule_type');
+      const scheduleDate = document.getElementById('schedule_date');
+
+      scheduleType.addEventListener('change', function () {
+        if (this.value === 'custom') {
+          scheduleDate.disabled = false;
+        } else {
+          scheduleDate.disabled = true;
+          scheduleDate.value = ""; // optional: reset tanggal
+        }
       });
+    </script>
 
-      document.getElementById(menuId).classList.add('active');
-
-      document.querySelectorAll('.menu-item').forEach(item => {
-        item.classList.remove('active');
-      });
-
-      element.classList.add('active');
-    }
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
