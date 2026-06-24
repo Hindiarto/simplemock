@@ -68,7 +68,7 @@
 
     <a class="menu-item active" onclick="showMenu('menuA', this)">Menu A</a>
     <a class="menu-item" onclick="showMenu('menuB', this)">Menu B</a>
-    <a class="menu-item" onclick="showMenu('menuC', this)">Menu C</a>
+    <a class="menu-item" onclick="showMenu('ruleTestRun', this)">Test Run Rule Audit</a>
   </div>
 
   <!-- Content -->
@@ -144,15 +144,224 @@
       </div>
     </div>
 
+
+
+
     <!-- Menu C -->
-    <div id="menuC" class="page-section">
+    <div id="ruleTestRun" class="page-section">
       <div class="card p-4">
-        <h4>Menu C</h4>
-        <p class="text-muted mb-0">Kosong dulu.</p>
+        <h4 class="mb-4">Test Run Rule Audit</h4>
+
+        <table class="table table-bordered align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>No</th>
+              <th>Rule ID</th>
+              <th>Rule Desc</th>
+              <th>Last Check</th>
+              <th>Status</th>
+              <th width="160">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>CIF-001</td>
+              <td>Nik yang sama digunakan pada > 1 CIF</td>
+              <td>2022-06-22 / 02:29:29</td>
+              <td>Sukses</td>
+              <td>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" onclick="showMenu('testRunSuccess', this)">
+                  Test Run
+                </button>
+              </td>
+            </tr>
+
+             <tr>
+              <td>2</td>
+              <td>DEP-001</td>
+              <td>Melebihi bunga penjaminan LPS</td>
+              <td>2022-06-22 / 02:29:29</td>
+              <td><span class="badge bg-danger">Gagal</span></td>
+              <td>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" onclick="showMenu('testRunFailed', this)">
+                  Test Run
+                </button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
       </div>
     </div>
 
-  </div>
+
+    <!-- CONTOH TEST RUN SUKSES-->
+    <div id="testRunSuccess" class="page-section container py-4">
+        <div class="card shadow-sm mx-auto" style="max-width: 800px;"></div>
+            <div class="card-body p-0">
+                <!-- Header -->
+                <div class="text-center border-bottom py-3">
+                    <h2 class="fw-bold mb-0">
+                        Hasil Test Run Rule Audit
+                    </h2>
+                </div>
+                <!-- Detail -->
+                <table class="table table-bordered mb-0">
+                    <tbody>
+                        <tr>
+                            <th style="width:35%">Rule-ID</th>
+                            <td>CIF-001</td>
+                        </tr>
+                        <tr>
+                            <th>Status Test Run</th>
+                            <td>
+                                <span class="badge bg-success">
+                                    Sukses
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    <!-- CONTOH TEST RUN GAGAL-->
+    <div id="testRunFailed" class="page-section container py-4">
+
+        <div class="card shadow-sm mx-auto" style="max-width:900px;">
+
+            <div class="card-body p-0">
+
+                <div class="text-center border-bottom py-3">
+                    <h2 class="fw-bold mb-0">
+                        Hasil Test Run Rule Audit
+                    </h2>
+                </div>
+
+                <table class="table table-bordered mb-0 align-middle">
+                    <tbody>
+
+                        <tr>
+                            <th style="width:35%">Rule-ID</th>
+                            <td>CIF-001</td>
+                        </tr>
+
+                        <tr>
+                            <th>Status Test Run</th>
+                            <td>
+                                <span class="badge bg-danger">Gagal</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Database Not Found</th>
+                            <td>[CBS.BKT.20260331]</td>
+                        </tr>
+
+                        <tr>
+                            <th>Table Not Found</th>
+                            <td>
+                                <div>[CBS.BKT.20260331] - MST_CIF</div>
+                                <div>[CBS.BKT.20260331] - MST_CIF_PERSNL</div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Field Not Found</th>
+                            <td>
+                                <div class="mb-3">
+                                    <strong>[CBS.BKT.20260331] - MST_CIF</strong><br>
+                                    IDNNBR, CSTTYPE
+                                </div>
+
+                                <div>
+                                    <strong>[CBS.BKT.20260331] - MST_CIF_PERSNL</strong><br>
+                                    HP, EMAIL
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Create Table Statement</th>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#createTableStatement">
+                                    Show SQL
+                                </button>
+
+                                <div class="collapse mt-3" id="createTableStatement">
+    <pre class="bg-light p-3 border rounded mb-0"><code>CREATE TABLE [dbo].[MST_CIF](
+        [CIFID] [varchar](10) NOT NULL,
+        [AOID] [varchar](10) NOT NULL,
+        [DTJOIN] [date] NOT NULL,
+        [FULLNM] [varchar](200) NULL,
+        [FLGBL] [int] NULL,
+        [NPWP] [varchar](20) NULL,
+        [CIFTYPE] [int] NOT NULL,
+        [COUNTRYID] [char](2) NOT NULL
+    ) ON [PRIMARY]</code></pre>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Alter Table Statement</th>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#alterTableStatement">
+                                    Show SQL
+                                </button>
+
+                                <div class="collapse mt-3" id="alterTableStatement">
+    <pre class="bg-light p-3 border rounded mb-0"><code>ALTER TABLE [dbo].[MST_CIF]
+    ADD [TEST] VARCHAR(50) NULL;</code></pre>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Output Table Create Statement</th>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#outputCreateTableStatement">
+                                    Show SQL
+                                </button>
+
+                                <div class="collapse mt-3" id="outputCreateTableStatement">
+    <pre class="bg-light p-3 border rounded mb-0"><code>CREATE TABLE [dbo].[MST_CIF_OUTPUT](
+        [CIFID] [varchar](10) NOT NULL,
+        [AOID] [varchar](10) NOT NULL,
+        [DTJOIN] [date] NOT NULL,
+        [FULLNM] [varchar](200) NULL,
+        [FLGBL] [int] NULL,
+        [NPWP] [varchar](20) NULL,
+        [CIFTYPE] [int] NOT NULL,
+        [COUNTRYID] [char](2) NOT NULL
+    ) ON [PRIMARY]</code></pre>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+    
+
+
+
+
+
+
+
 
   <!-- Modal Popup -->
   <div class="modal fade" id="actionModal" tabindex="-1">
