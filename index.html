@@ -69,18 +69,12 @@
     <h4 class="mb-4">Mockup Menu</h4>
 
 
-    <!-- <a class="menu-item active" onclick="showMenu('menuA', this)">Rule Group</a> -->
-    <a class="menu-item active" data-menu="ruleGroup" onclick="showMenu('ruleGroupList', this)">
-      Rule Group
-    </a>
+    <!-- <a class="menu-item active" onclick="showMenu('menuA', this)">Rule Group</a> --> 
+    <a class="menu-item active" data-menu="ruleGroup" onclick="showMenu('ruleGroupList', this)"> Daftar Grup Asesmen</a>
     <!-- <a class="menu-item" onclick="showMenu('menuB', this)">Rule</a> -->
-    <a class="menu-item" data-menu="ruleB" onclick="showMenu('ruleList', this)">
-      Rule
-    </a>
+    <a class="menu-item" data-menu="ruleB" onclick="showMenu('ruleList', this)"> Parameter Asesmen</a>
 
-
-
-    <a class="menu-item" onclick="showMenu('ruleTestRun', this)">Test Run Rule Audit</a>
+    <a class="menu-item" onclick="showMenu('ruleTestRun', this)">Test Run Parameter Asesmen</a>
     <a class="menu-item" onclick="showMenu('parameterEkstrakData', this)">Parameter Database Staging</a>
     
 
@@ -95,10 +89,10 @@
       <div class="card p-4">
 
         <div class="d-flex justify-content-between align-items-center mb-3">
-          <h4 class="mb-0">Rule Group</h4>
+          <h4 class="mb-0">Grup Asesmen</h4>
 
           <button class="btn btn-primary" onclick="showMenu('ruleGroupForm', this)">
-            + Rule Group
+            + Grup Asesmen
           </button>
         </div>
 
@@ -106,18 +100,28 @@
           <thead class="table-light">
             <tr>
               <th>No</th>
-              <th>Rule Group</th>
+              <th>Grup Asesmen</th>
               <th>Keterangan</th>
               <th width="160">Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+           <tr>
               <td>1</td>
               <td>CIF</td>
-              <td>Kategori Rule Audit CIF</td>
+              <td>Grup Asesmen Audit CIF</td>
               <td>
-                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#actionModal">
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" onclick="showMenu('ruleGroupForm', this)">
+                  Edit
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>DEP</td>
+              <td>Grup Asesmen Audit DEP</td>
+              <td>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" onclick="showMenu('ruleGroupForm', this)">
                   Edit
                 </button>
               </td>
@@ -127,53 +131,16 @@
 
       </div>
     </div>
-    <!-- <div id="list-ruleGroup" class="page-section">
-      <div class="card p-4">
-        <h4 class="mb-4">Rule Group</h4>
 
-        <table class="table table-bordered align-middle">
-          <thead class="table-light">
-            <tr>
-              <th>No</th>
-              <th>Rule Group</th>
-              <th>Keterangan</th>
-              <th width="160">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>CIF</td>
-              <td>Kategori Rule Audit CIF</td>
-              <td>
-                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#actionModal">
-                  Edit
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td>DEP</td>
-              <td>Kategori Rule Audit DEP</td>
-              <td>
-                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#actionModal">
-                  Edit
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div> -->
 
     <!-- Tambah Rule Group baru -->
     <div id="ruleGroupForm" class="page-section">
       <div class="card p-4">
 
-        <h4 class="mb-4">Tambah Rule Group</h4>
+        <h4 class="mb-4">Tambah/Edit Grup Asesmen</h4>
 
         <div class="mb-3">
-          <label class="form-label">Nama Rule Group</label>
+          <label class="form-label">Nama Grup Asesmen</label>
           <input type="text" class="form-control" placeholder="">
         </div>
 
@@ -183,8 +150,7 @@
         </div>
 
         <div class="d-flex gap-2">
-          <button class="btn btn-secondary" onclick="showMenu('ruleGroupList', document.querySelector('[data-menu=\"
-            ruleGroup\"]'))">
+          <button class="btn btn-secondary" onclick="showMenu('ruleGroupList', this)">
             Kembali
           </button>
 
@@ -193,23 +159,6 @@
 
       </div>
     </div>
-    <!-- <div id="menuA" class="page-section active">
-      <div class="card p-4">
-        <h4 class="mb-4">Rule Group</h4>
-
-        <div class="mb-3">
-          <label class="form-label">Nama Rule Group</label>
-          <input type="text" class="form-control" placeholder="CIF">
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Keterangan</label>
-          <textarea class="form-control" rows="3" placeholder="Kategori Rule Audit CIF"></textarea>
-        </div>
-
-        <button class="btn btn-primary">Simpan</button>
-      </div>
-    </div> -->
 
     <!-- Menu B -->
     <!-- Daftar Rule Group -->
@@ -217,24 +166,22 @@
       <div class="card p-4">
 
         <div class="d-flex justify-content-between align-items-center mb-3">
-          <h4 class="mb-0">Rule Group</h4>
+          <h4 class="mb-0">Daftar Parameter Asesmen</h4>
 
-          <button class="btn btn-primary" onclick="showMenu('ruleForm', document.querySelector('[data-menu=ruleB]'))">
-            + Rule Group
+          <button class="btn btn-primary" onclick="showMenu('ruleForm', this)">
+            + Parameter Asesmen
           </button>
         </div>
 
         <table class="table table-bordered align-middle">
           <thead class="table-light">
-            <tr>
+           <tr>
               <th>No</th>
-              <th>Rule Group</th>
-              <th>ID Rule</th>
-              <th>Keterangan Rule</th>
-              <th>SQL</th>
+              <th>Grup Asesmen</th>
+              <th>Asesmen ID</th>
+              <th>Keterangan</th>
               <th>Jadwal</th>
               <th>Tanggal</th>
-              <th>Dimensi</th>
               <th width="160">Action</th>
             </tr>
           </thead>
@@ -242,26 +189,39 @@
           <tbody>
             <tr>
               <td>1</td>
-              <td>CIF - Kategori Rule Audit CIF</td>
+              <td>CIF - Kategori Asesmen CIF</td>
               <td>CIF-001</td>
-              <td>NIK yang sama digunakan pada > CIF</td>
+              <td>NIK yang sama digunakan pada >1 CIF</td>             
+              <td>Tiap Hari</td>
+              <td>-</td>
               <td>
-                SELECT
-                b.IDNBR,
-                COUNT(*) AS JUMLAH_PENGGUNAAN
-                FROM [CBS.BKT.20260331].[dbo].[MST_CIF] a
-                LEFT JOIN [CBS.BKT.20260331].[dbo].[MST_CIFPERSNL] b
-                ON a.CIFID = b.CIFID
-                WHERE b.IDNBR IS NOT NULL
-                GROUP BY b.IDNBR
-                HAVING COUNT(*) > 1
-                ORDER BY COUNT(*) DESC
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" onclick="showMenu('ruleForm', this)">
+                  Edit
+                </button>
               </td>
-              <td>Tiap Hari / Hari Kerja/ Tgl Tertentu</td>
-              <td></td>
-              <td>explicit</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>CIF - Kategori Asesmen CIF</td>
+              <td>CIF-002</td>
+              <td>NO HP yang sama digunakan pada >1 CIF</td>
+              <td>Hari Kerja</td>
+              <td>-</td>
               <td>
-                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#actionModal">
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" onclick="showMenu('ruleForm', this)">
+                  Edit
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>DEP - Kategori Asesmen Deposito</td>
+              <td>DEP-001</td>
+              <td>Melebihi bunga penjaminan LPS</td>
+              <td>Tanggal Tertentu</td>
+              <td>24 Juni 2026</td>
+              <td>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" onclick="showMenu('ruleForm', this)">
                   Edit
                 </button>
               </td>
@@ -277,20 +237,20 @@
     <div id="ruleForm" class="page-section">
       <div class="card p-4">
 
-        <h4 class="mb-4">Tambah Rule</h4>
+        <h4 class="mb-4">Tambah Parameter Asesmen</h4>
 
         <div class="mb-3">
-          <label class="form-label">Rule Group</label>
+          <label class="form-label">Parameter Asesmen</label>
           <input type="text" class="form-control" placeholder="">
         </div>
 
         <div class="mb-3">
-          <label class="form-label">ID Rule</label>
+          <label class="form-label">ID Asesmen</label>
           <input type="text" class="form-control" placeholder="">
         </div>
 
         <div class="mb-3">
-          <label class="form-label">Keterangan Rule</label>
+          <label class="form-label">Keterangan</label>
           <input type="text" class="form-control" placeholder="">
         </div>
 
@@ -309,14 +269,10 @@
           <input type="text" class="form-control" placeholder="">
         </div>
 
-        <div class="mb-3">
-          <label class="form-label">Dimensi</label>
-          <input type="text" class="form-control" placeholder="">
-        </div>
 
         <div class="d-flex gap-2">
 
-          <button class="btn btn-secondary" onclick="showMenu('ruleList', document.querySelector('[data-menu=ruleB]'))">
+          <button class="btn btn-secondary" onclick="showMenu('ruleList', this)">
             Kembali
           </button>
 
@@ -328,64 +284,19 @@
 
       </div>
     </div>
-    <!-- <div id="menuB" class="page-section">
-      <div class="card p-4">
-        <h4 class="mb-4">Rule</h4>
-
-        <table class="table table-bordered align-middle">
-          <thead class="table-light">
-            <tr>
-              <th>Nama</th>
-              <th>Status</th>
-              <th width="160">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Data A</td>
-              <td>Active</td>
-              <td>
-                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#actionModal">
-                  Edit
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Data B</td>
-              <td>Pending</td>
-              <td>
-                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#actionModal">
-                  Edit
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Data C</td>
-              <td>Inactive</td>
-              <td>
-                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#actionModal">
-                  Edit
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div> -->
-
 
 
     <!-- Menu C -->
     <div id="ruleTestRun" class="page-section">
       <div class="card p-4">
-        <h4 class="mb-4">Test Run Rule Audit</h4>
+        <h4 class="mb-4">Test Run Parameter Asesmen</h4>
 
         <table class="table table-bordered align-middle">
           <thead class="table-light">
             <tr>
               <th>No</th>
-              <th>Rule ID</th>
-              <th>Rule Desc</th>
+              <th>Asesmen ID</th>
+              <th>Keterangan</th>
               <th>Last Check</th>
               <th>Status</th>
               <th width="160">Action</th>
@@ -430,14 +341,14 @@
                 <!-- Header -->
                 <div class="text-center border-bottom py-3">
                     <h2 class="fw-bold mb-0">
-                        Hasil Test Run Rule Audit
+                        Hasil Test Run Parameter Asesmen
                     </h2>
                 </div>
                 <!-- Detail -->
                 <table class="table table-bordered mb-0">
                     <tbody>
                         <tr>
-                            <th style="width:35%">Rule-ID</th>
+                            <th style="width:35%">Asesmen-ID</th>
                             <td>CIF-001</td>
                         </tr>
                         <tr>
@@ -470,7 +381,7 @@
 
                 <div class="text-center border-bottom py-3">
                     <h2 class="fw-bold mb-0">
-                        Hasil Test Run Rule Audit
+                        Hasil Test Run Parameter Asesmen
                     </h2>
                 </div>
 
@@ -478,7 +389,7 @@
                     <tbody>
 
                         <tr>
-                            <th style="width:35%">Rule-ID</th>
+                            <th style="width:35%">Asesmen-ID</th>
                             <td>CIF-001</td>
                         </tr>
 
