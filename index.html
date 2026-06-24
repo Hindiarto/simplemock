@@ -69,6 +69,8 @@
     <a class="menu-item active" onclick="showMenu('menuA', this)">Menu A</a>
     <a class="menu-item" onclick="showMenu('menuB', this)">Menu B</a>
     <a class="menu-item" onclick="showMenu('ruleTestRun', this)">Test Run Rule Audit</a>
+    <a class="menu-item" onclick="showMenu('parameterEkstrakData', this)">Parameter Database Staging</a>
+    
   </div>
 
   <!-- Content -->
@@ -146,7 +148,6 @@
 
 
 
-
     <!-- Menu C -->
     <div id="ruleTestRun" class="page-section">
       <div class="card p-4">
@@ -195,7 +196,6 @@
       </div>
     </div>
 
-
     <!-- CONTOH TEST RUN SUKSES-->
     <div id="testRunSuccess" class="page-section container py-4">
         <div class="card shadow-sm mx-auto" style="max-width: 800px;"></div>
@@ -224,7 +224,7 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+    </div>
 
     <!-- CONTOH TEST RUN GAGAL-->
     <div id="testRunFailed" class="page-section container py-4">
@@ -357,6 +357,175 @@
     
 
 
+ <!-- PARAMETER DATABASE STAGING-->
+ <div id="parameterEkstrakData" class="page-section">
+      <div class="card p-4">
+        <h4 class="mb-4">Parameter Database Staging</h4>
+
+        <table class="table table-bordered align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>No</th>
+              <th>Database</th>
+              <th>Table</th>
+              <th>Last Run</th>
+              <th>Last Finished</th>
+              <th width="160">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>CBS.BKT.20260321</td>
+              <td>MST_CIF</td>
+              <td>2022-06-22 / 02:29:29</td>
+              <td>2022-06-22 / 02:35:01</td>
+              <td>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" onclick="showMenu('contohDetailEkstrakData', this)">
+                  Detail
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>CBS.BKT.20260321</td>
+              <td>MST_CIFPERSNL</td>
+              <td>2022-06-22 / 02:30:01</td>
+              <td>2022-06-22 / 02:32:29</td>
+              <td>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" onclick="showMenu('contohDetailEkstrakData', this)">
+                  Detail
+                </button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- CONTOH DETAIL PARAMETER EKSTRAK DATA-->
+    <div id="contohDetailEkstrakData" class="page-section container py-4">
+
+        <div class="card shadow-sm mx-auto" style="max-width:900px;">
+
+            <div class="card-body p-0">
+
+                <div class="text-center border-bottom py-3">
+                    <h2 class="fw-bold mb-0">
+                        Parameter Database Staging
+                    </h2>
+                </div>
+
+                <form>
+                    <table class="table table-bordered mb-0 align-middle">
+                        <tbody>
+
+                            <tr>
+                                <th style="width:35%">Database</th>
+                                <td>
+                                    <input type="text" class="form-control" value="CBS.BKT.20260321">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>Table</th>
+                                <td>
+                                    <input type="text" class="form-control" value="MST_CIF">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>Schedule</th>
+                                <td>
+                                    <select class="form-select">
+                                        <option value="">-- Pilih Schedule --</option>
+                                        <option value="daily">Tiap Hari</option>
+                                        <option value="workday">Hari Kerja</option>
+                                        <option value="specific_date">Tanggal Tertentu</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>Tanggal</th>
+                                <td>
+                                    <input type="date" class="form-control">
+                                    <small class="text-muted">
+                                        Diisi jika Schedule adalah Tanggal Tertentu.
+                                    </small>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>Metode Copy</th>
+                                <td>
+                                    <select class="form-select">
+                                        <option value="">-- Pilih Metode Copy --</option>
+                                        <option value="replace">Replace</option>
+                                        <option value="last_copied_date">Last Copied Date</option>
+                                        <option value="detect_change">Detect Change</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>Last Date Copied</th>
+                                <td>
+                                    <input type="date" class="form-control">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>Last Date Changed</th>
+                                <td>
+                                    <input type="date" class="form-control">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>Field to Detect Changed</th>
+                                <td>
+                                    <select class="form-select">
+                                        <option value="">-- Pilih Field --</option>
+                                        <option value="DTUPD">DTUPD</option>
+                                        <option value="CREATED_AT">CREATED_AT</option>
+                                        <option value="UPDATED_AT">UPDATED_AT</option>
+                                        <option value="LAST_MODIFIED">LAST_MODIFIED</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>Unique Field</th>
+                                <td>
+                                    <select class="form-select">
+                                        <option value="">-- Pilih Unique Field --</option>
+                                        <option value="CIFID">CIFID</option>
+                                        <option value="IDNBR">IDNBR</option>
+                                        <option value="ACCNBR">ACCNBR</option>
+                                        <option value="CUSTOMER_ID">CUSTOMER_ID</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2" class="text-center p-3">
+                                    <button type="submit" class="btn btn-primary px-5 fw-bold">
+                                        SUBMIT
+                                    </button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
 
 
 
