@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mock Sidebar Menu</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      min-height: 100vh;
+      background: #f5f6fa;
+    }
+
+    .sidebar {
+      width: 240px;
+      min-height: 100vh;
+      background: #1f2937;
+      color: white;
+      position: fixed;
+      left: 0;
+      top: 0;
+      padding: 20px;
+    }
+
+    .sidebar .menu-item {
+      display: block;
+      padding: 12px 15px;
+      margin-bottom: 8px;
+      color: #d1d5db;
+      text-decoration: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .sidebar .menu-item:hover,
+    .sidebar .menu-item.active {
+      background: #374151;
+      color: white;
+    }
+
+    .content {
+      margin-left: 240px;
+      padding: 30px;
+    }
+
+    .page-section {
+      display: none;
+    }
+
+    .page-section.active {
+      display: block;
+    }
+
+    .card {
+      border: none;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h4 class="mb-4">Mock Menu</h4>
+
+    <a class="menu-item active" onclick="showMenu('menuA', this)">Menu A</a>
+    <a class="menu-item" onclick="showMenu('menuB', this)">Menu B</a>
+    <a class="menu-item" onclick="showMenu('menuC', this)">Menu C</a>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- Menu A -->
+    <div id="menuA" class="page-section active">
+      <div class="card p-4">
+        <h4 class="mb-4">Menu A Form</h4>
+
+        <div class="mb-3">
+          <label class="form-label">Nama Rule</label>
+          <input type="text" class="form-control" placeholder="Contoh: Rule Duplicate CIF">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Kode Rule</label>
+          <input type="text" class="form-control" placeholder="Contoh: R001">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Deskripsi</label>
+          <textarea class="form-control" rows="3" placeholder="Masukkan deskripsi rule"></textarea>
+        </div>
+
+        <button class="btn btn-primary">Simpan</button>
+      </div>
+    </div>
+
+    <!-- Menu B -->
+    <div id="menuB" class="page-section">
+      <div class="card p-4">
+        <h4 class="mb-4">Menu B List</h4>
+
+        <table class="table table-bordered align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>Nama</th>
+              <th>Status</th>
+              <th width="160">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Data A</td>
+              <td>Active</td>
+              <td>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#actionModal">
+                  Edit
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>Data B</td>
+              <td>Pending</td>
+              <td>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#actionModal">
+                  Edit
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>Data C</td>
+              <td>Inactive</td>
+              <td>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#actionModal">
+                  Edit
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Menu C -->
+    <div id="menuC" class="page-section">
+      <div class="card p-4">
+        <h4>Menu C</h4>
+        <p class="text-muted mb-0">Kosong dulu.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Modal Popup -->
+  <div class="modal fade" id="actionModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title">Form Action</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Input 1</label>
+            <input type="text" class="form-control" placeholder="Masukkan input 1">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Input 2</label>
+            <input type="text" class="form-control" placeholder="Masukkan input 2">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Input 3</label>
+            <input type="text" class="form-control" placeholder="Masukkan input 3">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+          <button class="btn btn-primary">Simpan</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showMenu(menuId, element) {
+      document.querySelectorAll('.page-section').forEach(section => {
+        section.classList.remove('active');
+      });
+
+      document.getElementById(menuId).classList.add('active');
+
+      document.querySelectorAll('.menu-item').forEach(item => {
+        item.classList.remove('active');
+      });
+
+      element.classList.add('active');
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
