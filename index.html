@@ -63,41 +63,41 @@
   </style>
 
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
 
-    function createPieChart(id, labels, data) {
+      function createPieChart(id, labels, data) {
         const canvas = document.getElementById(id);
 
         if (!canvas) {
-            console.error("Canvas tidak ditemukan:", id);
-            return;
+          console.error("Canvas tidak ditemukan:", id);
+          return;
         }
 
         new Chart(canvas.getContext("2d"), {
-            type: "pie",
-            data: {
-                labels: labels,
-                datasets: [{
-                    data: data
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false
-            }
+          type: "pie",
+          data: {
+            labels: labels,
+            datasets: [{
+              data: data
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false
+          }
         });
-    }
+      }
 
-    createPieChart("chartAssessmentStatus", ["Passed", "Failed"], [98, 27]);
-    createPieChart("chartAssessmentCategory", ["Data Quality", "Compliance", "Risk", "Control"], [45, 30, 25, 25]);
-    createPieChart("chartFindingsSeverity", ["Low", "Medium", "High", "Critical"], [40, 35, 18, 7]);
-    createPieChart("chartDataSource", ["CBS", "SCV", "GL", "CRM"], [52, 23, 18, 12]);
+      createPieChart("chartAssessmentStatus", ["Passed", "Failed"], [98, 27]);
+      createPieChart("chartAssessmentCategory", ["Data Quality", "Compliance", "Risk", "Control"], [45, 30, 25, 25]);
+      createPieChart("chartFindingsSeverity", ["Low", "Medium", "High", "Critical"], [40, 35, 18, 7]);
+      createPieChart("chartDataSource", ["CBS", "SCV", "GL", "CRM"], [52, 23, 18, 12]);
 
-});
-</script>
+    });
+  </script>
 
 
 </head>
@@ -111,15 +111,15 @@ document.addEventListener("DOMContentLoaded", function () {
     <h4 class="mb-4">Mockup Menu</h4>
 
 
-    <a class="menu-item active" onclick="showMenu('dashboard', this)">Dashboard</a> 
+    <a class="menu-item active" onclick="showMenu('dashboard', this)">Dashboard</a>
     <a class="menu-item " data-menu="ruleGroup" onclick="showMenu('globalParameterList', this)"> Parameter Global</a>
-    <a class="menu-item " data-menu="ruleGroup" onclick="showMenu('ruleGroupList', this)"> Daftar Grup Asesmen</a>
+    <a class="menu-item " data-menu="ruleGroup" onclick="showMenu('ruleGroupList', this)"> Grup Asesmen</a>
     <!-- <a class="menu-item" onclick="showMenu('menuB', this)">Rule</a> -->
     <a class="menu-item" data-menu="ruleB" onclick="showMenu('ruleList', this)"> Parameter Asesmen</a>
 
     <a class="menu-item" onclick="showMenu('ruleTestRun', this)">Test Run Parameter Asesmen</a>
     <a class="menu-item" onclick="showMenu('parameterEkstrakData', this)">Parameter Database Staging</a>
-    
+
 
   </div>
 
@@ -129,87 +129,87 @@ document.addEventListener("DOMContentLoaded", function () {
     <!-- DASHBOARD-->
     <div id="dashboard" class="page-section active">
 
-        <!-- KPI -->
-        <div class="row g-3 mb-4">
+      <!-- KPI -->
+      <div class="row g-3 mb-4">
 
-            <div class="col-md-3">
-                <div class="card text-center shadow-sm">
-                    <div class="card-body">
-                        <h6>Total Assessment</h6>
-                        <h2 class="fw-bold">125</h2>
-                    </div>
-                </div>
+        <div class="col-md-3">
+          <div class="card text-center shadow-sm">
+            <div class="card-body">
+              <h6>Total Assessment</h6>
+              <h2 class="fw-bold">125</h2>
             </div>
-
-            <div class="col-md-3">
-                <div class="card text-center shadow-sm">
-                    <div class="card-body">
-                        <h6>Assessment Passed</h6>
-                        <h2 class="fw-bold text-success">98</h2>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="card text-center shadow-sm">
-                    <div class="card-body">
-                        <h6>Assessment Failed</h6>
-                        <h2 class="fw-bold text-danger">27</h2>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="card text-center shadow-sm">
-                    <div class="card-body">
-                        <h6>Data Sources</h6>
-                        <h2 class="fw-bold">43</h2>
-                    </div>
-                </div>
-            </div>
-
+          </div>
         </div>
 
-        <!-- Pie Chart -->
-    <div class="row g-4">
-
-        <div class="col-md-6">
-            <div class="card shadow-sm">
-                <div class="card-header">Assessment Status</div>
-                <div class="card-body" style="height:300px;">
-                    <canvas id="chartAssessmentStatus"></canvas>
-                </div>
+        <div class="col-md-3">
+          <div class="card text-center shadow-sm">
+            <div class="card-body">
+              <h6>Assessment Passed</h6>
+              <h2 class="fw-bold text-success">98</h2>
             </div>
+          </div>
         </div>
 
-        <div class="col-md-6">
-            <div class="card shadow-sm">
-                <div class="card-header">Assessment by Category</div>
-                <div class="card-body" style="height:300px;">
-                    <canvas id="chartAssessmentCategory"></canvas>
-                </div>
+        <div class="col-md-3">
+          <div class="card text-center shadow-sm">
+            <div class="card-body">
+              <h6>Assessment Failed</h6>
+              <h2 class="fw-bold text-danger">27</h2>
             </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card text-center shadow-sm">
+            <div class="card-body">
+              <h6>Data Sources</h6>
+              <h2 class="fw-bold">43</h2>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Pie Chart -->
+      <div class="row g-4">
+
+        <div class="col-md-6">
+          <div class="card shadow-sm">
+            <div class="card-header">Assessment Status</div>
+            <div class="card-body" style="height:300px;">
+              <canvas id="chartAssessmentStatus"></canvas>
+            </div>
+          </div>
         </div>
 
         <div class="col-md-6">
-            <div class="card shadow-sm">
-                <div class="card-header">Findings Severity</div>
-                <div class="card-body" style="height:300px;">
-                    <canvas id="chartFindingsSeverity"></canvas>
-                </div>
+          <div class="card shadow-sm">
+            <div class="card-header">Assessment by Category</div>
+            <div class="card-body" style="height:300px;">
+              <canvas id="chartAssessmentCategory"></canvas>
             </div>
+          </div>
         </div>
 
         <div class="col-md-6">
-            <div class="card shadow-sm">
-                <div class="card-header">Data Source Distribution</div>
-                <div class="card-body" style="height:300px;">
-                    <canvas id="chartDataSource"></canvas>
-                </div>
+          <div class="card shadow-sm">
+            <div class="card-header">Findings Severity</div>
+            <div class="card-body" style="height:300px;">
+              <canvas id="chartFindingsSeverity"></canvas>
             </div>
+          </div>
         </div>
 
-    </div>
+        <div class="col-md-6">
+          <div class="card shadow-sm">
+            <div class="card-header">Data Source Distribution</div>
+            <div class="card-body" style="height:300px;">
+              <canvas id="chartDataSource"></canvas>
+            </div>
+          </div>
+        </div>
+
+      </div>
 
     </div>
 
@@ -236,13 +236,14 @@ document.addEventListener("DOMContentLoaded", function () {
             </tr>
           </thead>
           <tbody>
-           <tr>
+            <tr>
               <td>1</td>
               <td>PRCTIME</td>
               <td>Jam dilakukan seluruh proses CA, mulai copy-ekstrak data hingga pembentukan tabel fakta</td>
               <td>02:00</td>
               <td>
-                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" onclick="showMenu('globalParameterForm', this)">
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal"
+                  onclick="showMenu('globalParameterForm', this)">
                   Edit
                 </button>
               </td>
@@ -251,10 +252,12 @@ document.addEventListener("DOMContentLoaded", function () {
               <td>2</td>
               <td>DATESTART</td>
               <td>Penentuan tanggal acuan paling awal untuk dilakukan pemeriksaan.
-Ini berlaku untuk data data transaksional, setelah proses selesai, tanggal proses terakhir akan menjadi tanggal acuan selanjutnya.</td>
+                Ini berlaku untuk data data transaksional, setelah proses selesai, tanggal proses terakhir akan menjadi
+                tanggal acuan selanjutnya.</td>
               <td>2026-05-01</td>
               <td>
-                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" onclick="showMenu('globalParameterForm', this)">
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal"
+                  onclick="showMenu('globalParameterForm', this)">
                   Edit
                 </button>
               </td>
@@ -310,7 +313,7 @@ Ini berlaku untuk data data transaksional, setelah proses selesai, tanggal prose
       <div class="card p-4">
 
         <div class="d-flex justify-content-between align-items-center mb-3">
-          <h4 class="mb-0">Grup Asesmen</h4>
+          <h4 class="mb-0">Daftar Grup Asesmen</h4>
 
           <button class="btn btn-primary" onclick="showMenu('ruleGroupForm', this)">
             + Grup Asesmen
@@ -327,7 +330,7 @@ Ini berlaku untuk data data transaksional, setelah proses selesai, tanggal prose
             </tr>
           </thead>
           <tbody>
-           <tr>
+            <tr>
               <td>1</td>
               <td>CIF</td>
               <td>Grup Asesmen Audit CIF</td>
@@ -396,7 +399,7 @@ Ini berlaku untuk data data transaksional, setelah proses selesai, tanggal prose
 
         <table class="table table-bordered align-middle">
           <thead class="table-light">
-           <tr>
+            <tr>
               <th>No</th>
               <th>Grup Asesmen</th>
               <th>Asesmen ID</th>
@@ -412,7 +415,7 @@ Ini berlaku untuk data data transaksional, setelah proses selesai, tanggal prose
               <td>1</td>
               <td>CIF - Kategori Asesmen CIF</td>
               <td>CIF-001</td>
-              <td>NIK yang sama digunakan pada >1 CIF</td>             
+              <td>NIK yang sama digunakan pada >1 CIF</td>
               <td>Tiap Hari</td>
               <td>-</td>
               <td>
@@ -461,8 +464,12 @@ Ini berlaku untuk data data transaksional, setelah proses selesai, tanggal prose
         <h4 class="mb-4">Edit / Tambah Parameter Asesmen</h4>
 
         <div class="mb-3">
-          <label class="form-label">Parameter Asesmen</label>
-          <input type="text" class="form-control" placeholder="">
+          <label class="form-label">Grup Asesmen</label>
+          <select class="form-control">
+            <option value="">-- Pilih Grup Asesmen --</option>
+            <option value="CIF">CIF</option>
+            <option value="DEP">DEP</option>
+          </select>
         </div>
 
         <div class="mb-3">
@@ -481,13 +488,13 @@ Ini berlaku untuk data data transaksional, setelah proses selesai, tanggal prose
         </div>
 
         <div class="mb-3">
-          <label class="form-label">Schedule</label>
+          <label class="form-label">Jadwal</label>
           <input type="text" class="form-control" placeholder="">
         </div>
 
         <div class="mb-3">
           <label class="form-label">Tanggal</label>
-          <input type="text" class="form-control" placeholder="">
+          <input type="date" class="form-control">
         </div>
 
 
@@ -531,13 +538,14 @@ Ini berlaku untuk data data transaksional, setelah proses selesai, tanggal prose
               <td>2022-06-22 / 02:29:29</td>
               <td>Sukses</td>
               <td>
-                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" onclick="showMenu('testRunSuccess', this)">
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal"
+                  onclick="showMenu('testRunSuccess', this)">
                   Test Run
                 </button>
               </td>
             </tr>
 
-             <tr>
+            <tr>
               <td>2</td>
               <td>DEP-001</td>
               <td>Melebihi bunga penjaminan LPS</td>
@@ -557,109 +565,108 @@ Ini berlaku untuk data data transaksional, setelah proses selesai, tanggal prose
 
     <!-- CONTOH TEST RUN SUKSES-->
     <div id="testRunSuccess" class="page-section container py-4">
-        <div class="card shadow-sm mx-auto" style="max-width: 800px;"></div>
-            <div class="card-body p-0">
-                <!-- Header -->
-                <div class="text-center border-bottom py-3">
-                    <h2 class="fw-bold mb-0">
-                        Hasil Test Run Parameter Asesmen
-                    </h2>
-                </div>
-                <!-- Detail -->
-                <table class="table table-bordered mb-0">
-                    <tbody>
-                        <tr>
-                            <th style="width:35%">Asesmen-ID</th>
-                            <td>CIF-001</td>
-                        </tr>
-                        <tr>
-                            <th>Status Test Run</th>
-                            <td>
-                                <span class="badge bg-success">
-                                    Sukses
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="text-center p-3">
-                                <button type="button" class="btn btn-secondary px-4 fw-bold" onclick="showMenu('ruleTestRun', this)">
-                                    Kembali
-                                </button>
-                            </td>
-                        </tr>
+      <div class="card shadow-sm mx-auto" style="max-width: 800px;"></div>
+      <div class="card-body p-0">
+        <!-- Header -->
+        <div class="text-center border-bottom py-3">
+          <h2 class="fw-bold mb-0">
+            Hasil Test Run Parameter Asesmen
+          </h2>
+        </div>
+        <!-- Detail -->
+        <table class="table table-bordered mb-0">
+          <tbody>
+            <tr>
+              <th style="width:35%">Asesmen-ID</th>
+              <td>CIF-001</td>
+            </tr>
+            <tr>
+              <th>Status Test Run</th>
+              <td>
+                <span class="badge bg-success">
+                  Sukses
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="text-center p-3">
+                <button type="button" class="btn btn-secondary px-4 fw-bold" onclick="showMenu('ruleTestRun', this)">
+                  Kembali
+                </button>
+              </td>
+            </tr>
 
-                    </tbody>
-                </table>
-            </div>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- CONTOH TEST RUN GAGAL-->
     <div id="testRunFailed" class="page-section container py-4">
 
-        <div class="card shadow-sm mx-auto" style="max-width:900px;">
+      <div class="card shadow-sm mx-auto" style="max-width:900px;">
 
-            <div class="card-body p-0">
+        <div class="card-body p-0">
 
-                <div class="text-center border-bottom py-3">
-                    <h2 class="fw-bold mb-0">
-                        Hasil Test Run Parameter Asesmen
-                    </h2>
-                </div>
+          <div class="text-center border-bottom py-3">
+            <h2 class="fw-bold mb-0">
+              Hasil Test Run Parameter Asesmen
+            </h2>
+          </div>
 
-                <table class="table table-bordered mb-0 align-middle">
-                    <tbody>
+          <table class="table table-bordered mb-0 align-middle">
+            <tbody>
 
-                        <tr>
-                            <th style="width:35%">Asesmen-ID</th>
-                            <td>CIF-001</td>
-                        </tr>
+              <tr>
+                <th style="width:35%">Asesmen-ID</th>
+                <td>CIF-001</td>
+              </tr>
 
-                        <tr>
-                            <th>Status Test Run</th>
-                            <td>
-                                <span class="badge bg-danger">Gagal</span>
-                            </td>
-                        </tr>
+              <tr>
+                <th>Status Test Run</th>
+                <td>
+                  <span class="badge bg-danger">Gagal</span>
+                </td>
+              </tr>
 
-                        <tr>
-                            <th>Database Not Found</th>
-                            <td>[CBS.BKT.20260331]</td>
-                        </tr>
+              <tr>
+                <th>Database Not Found</th>
+                <td>[CBS.BKT.20260331]</td>
+              </tr>
 
-                        <tr>
-                            <th>Table Not Found</th>
-                            <td>
-                                <div>[CBS.BKT.20260331] - MST_CIF</div>
-                                <div>[CBS.BKT.20260331] - MST_CIF_PERSNL</div>
-                            </td>
-                        </tr>
+              <tr>
+                <th>Table Not Found</th>
+                <td>
+                  <div>[CBS.BKT.20260331] - MST_CIF</div>
+                  <div>[CBS.BKT.20260331] - MST_CIF_PERSNL</div>
+                </td>
+              </tr>
 
-                        <tr>
-                            <th>Field Not Found</th>
-                            <td>
-                                <div class="mb-3">
-                                    <strong>[CBS.BKT.20260331] - MST_CIF</strong><br>
-                                    IDNNBR, CSTTYPE
-                                </div>
+              <tr>
+                <th>Field Not Found</th>
+                <td>
+                  <div class="mb-3">
+                    <strong>[CBS.BKT.20260331] - MST_CIF</strong><br>
+                    IDNNBR, CSTTYPE
+                  </div>
 
-                                <div>
-                                    <strong>[CBS.BKT.20260331] - MST_CIF_PERSNL</strong><br>
-                                    HP, EMAIL
-                                </div>
-                            </td>
-                        </tr>
+                  <div>
+                    <strong>[CBS.BKT.20260331] - MST_CIF_PERSNL</strong><br>
+                    HP, EMAIL
+                  </div>
+                </td>
+              </tr>
 
-                        <tr>
-                            <th>Create Table Statement</th>
-                            <td>
-                                <button class="btn btn-sm btn-outline-primary"
-                                        data-bs-toggle="collapse"
-                                        data-bs-target="#createTableStatement">
-                                    Show SQL
-                                </button>
+              <tr>
+                <th>Create Table Statement</th>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
+                    data-bs-target="#createTableStatement">
+                    Show SQL
+                  </button>
 
-                                <div class="collapse mt-3" id="createTableStatement">
-    <pre class="bg-light p-3 border rounded mb-0"><code>CREATE TABLE [dbo].[MST_CIF](
+                  <div class="collapse mt-3" id="createTableStatement">
+                    <pre class="bg-light p-3 border rounded mb-0"><code>CREATE TABLE [dbo].[MST_CIF](
         [CIFID] [varchar](10) NOT NULL,
         [AOID] [varchar](10) NOT NULL,
         [DTJOIN] [date] NOT NULL,
@@ -669,37 +676,35 @@ Ini berlaku untuk data data transaksional, setelah proses selesai, tanggal prose
         [CIFTYPE] [int] NOT NULL,
         [COUNTRYID] [char](2) NOT NULL
     ) ON [PRIMARY]</code></pre>
-                                </div>
-                            </td>
-                        </tr>
+                  </div>
+                </td>
+              </tr>
 
-                        <tr>
-                            <th>Alter Table Statement</th>
-                            <td>
-                                <button class="btn btn-sm btn-outline-primary"
-                                        data-bs-toggle="collapse"
-                                        data-bs-target="#alterTableStatement">
-                                    Show SQL
-                                </button>
+              <tr>
+                <th>Alter Table Statement</th>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
+                    data-bs-target="#alterTableStatement">
+                    Show SQL
+                  </button>
 
-                                <div class="collapse mt-3" id="alterTableStatement">
-    <pre class="bg-light p-3 border rounded mb-0"><code>ALTER TABLE [dbo].[MST_CIF]
+                  <div class="collapse mt-3" id="alterTableStatement">
+                    <pre class="bg-light p-3 border rounded mb-0"><code>ALTER TABLE [dbo].[MST_CIF]
     ADD [TEST] VARCHAR(50) NULL;</code></pre>
-                                </div>
-                            </td>
-                        </tr>
+                  </div>
+                </td>
+              </tr>
 
-                        <tr>
-                            <th>Output Table Create Statement</th>
-                            <td>
-                                <button class="btn btn-sm btn-outline-primary"
-                                        data-bs-toggle="collapse"
-                                        data-bs-target="#outputCreateTableStatement">
-                                    Show SQL
-                                </button>
+              <tr>
+                <th>Output Table Create Statement</th>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
+                    data-bs-target="#outputCreateTableStatement">
+                    Show SQL
+                  </button>
 
-                                <div class="collapse mt-3" id="outputCreateTableStatement">
-    <pre class="bg-light p-3 border rounded mb-0"><code>CREATE TABLE [dbo].[MST_CIF_OUTPUT](
+                  <div class="collapse mt-3" id="outputCreateTableStatement">
+                    <pre class="bg-light p-3 border rounded mb-0"><code>CREATE TABLE [dbo].[MST_CIF_OUTPUT](
         [CIFID] [varchar](10) NOT NULL,
         [AOID] [varchar](10) NOT NULL,
         [DTJOIN] [date] NOT NULL,
@@ -709,29 +714,29 @@ Ini berlaku untuk data data transaksional, setelah proses selesai, tanggal prose
         [CIFTYPE] [int] NOT NULL,
         [COUNTRYID] [char](2) NOT NULL
     ) ON [PRIMARY]</code></pre>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="text-center p-3">
-                                <button type="button" class="btn btn-secondary px-4 fw-bold" onclick="showMenu('ruleTestRun', this)">
-                                    Kembali
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-            </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" class="text-center p-3">
+                  <button type="button" class="btn btn-secondary px-4 fw-bold" onclick="showMenu('ruleTestRun', this)">
+                    Kembali
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
         </div>
 
+      </div>
+
     </div>
-    
 
 
- <!-- PARAMETER DATABASE STAGING-->
- <div id="parameterEkstrakData" class="page-section">
+
+    <!-- PARAMETER DATABASE STAGING-->
+    <div id="parameterEkstrakData" class="page-section">
       <div class="card p-4">
         <h4 class="mb-4">Parameter Database Staging</h4>
 
@@ -754,7 +759,8 @@ Ini berlaku untuk data data transaksional, setelah proses selesai, tanggal prose
               <td>2022-06-22 / 02:29:29</td>
               <td>2022-06-22 / 02:35:01</td>
               <td>
-                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" onclick="showMenu('contohDetailEkstrakData', this)">
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal"
+                  onclick="showMenu('contohDetailEkstrakData', this)">
                   Detail
                 </button>
               </td>
@@ -766,7 +772,8 @@ Ini berlaku untuk data data transaksional, setelah proses selesai, tanggal prose
               <td>2022-06-22 / 02:30:01</td>
               <td>2022-06-22 / 02:32:29</td>
               <td>
-                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" onclick="showMenu('contohDetailEkstrakData', this)">
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal"
+                  onclick="showMenu('contohDetailEkstrakData', this)">
                   Detail
                 </button>
               </td>
@@ -780,187 +787,188 @@ Ini berlaku untuk data data transaksional, setelah proses selesai, tanggal prose
     <!-- CONTOH DETAIL PARAMETER EKSTRAK DATA-->
     <div id="contohDetailEkstrakData" class="page-section container py-4">
 
-        <div class="card shadow-sm mx-auto" style="max-width:900px;">
+      <div class="card shadow-sm mx-auto" style="max-width:900px;">
 
-            <div class="card-body p-0">
+        <div class="card-body p-0">
 
-                <div class="text-center border-bottom py-3">
-                    <h2 class="fw-bold mb-0">
-                        Parameter Database Staging
-                    </h2>
-                </div>
-
-                <form>
-                    <table class="table table-bordered mb-0 align-middle">
-                        <tbody>
-
-                            <tr>
-                                <th style="width:35%">Database</th>
-                                <td>
-                                    <input type="text" class="form-control" value="CBS.BKT.20260321">
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th>Table</th>
-                                <td>
-                                    <input type="text" class="form-control" value="MST_CIF">
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th>Schedule</th>
-                                <td>
-                                    <select class="form-select">
-                                        <option value="">-- Pilih Schedule --</option>
-                                        <option value="daily">Tiap Hari</option>
-                                        <option value="workday">Hari Kerja</option>
-                                        <option value="specific_date">Tanggal Tertentu</option>
-                                    </select>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th>Tanggal</th>
-                                <td>
-                                    <input type="date" class="form-control">
-                                    <small class="text-muted">
-                                        Diisi jika Schedule adalah Tanggal Tertentu.
-                                    </small>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th>Metode Copy</th>
-                                <td>
-                                    <select class="form-select">
-                                        <option value="">-- Pilih Metode Copy --</option>
-                                        <option value="replace">Replace</option>
-                                        <option value="last_copied_date">Last Copied Date</option>
-                                        <option value="detect_change">Detect Change</option>
-                                    </select>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th>Last Date Copied</th>
-                                <td>
-                                    <input type="date" class="form-control">
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th>Last Date Changed</th>
-                                <td>
-                                    <input type="date" class="form-control">
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th>Field to Detect Changed</th>
-                                <td>
-                                    <select class="form-select">
-                                        <option value="">-- Pilih Field --</option>
-                                        <option value="DTUPD">DTUPD</option>
-                                        <option value="CREATED_AT">CREATED_AT</option>
-                                        <option value="UPDATED_AT">UPDATED_AT</option>
-                                        <option value="LAST_MODIFIED">LAST_MODIFIED</option>
-                                    </select>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th>Unique Field</th>
-                                <td>
-                                    <select class="form-select">
-                                        <option value="">-- Pilih Unique Field --</option>
-                                        <option value="CIFID">CIFID</option>
-                                        <option value="IDNBR">IDNBR</option>
-                                        <option value="ACCNBR">ACCNBR</option>
-                                        <option value="CUSTOMER_ID">CUSTOMER_ID</option>
-                                    </select>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td colspan="2" class="text-center p-3">
-                                   <button type="button" class="btn btn-secondary px-4 fw-bold" onclick="showMenu('parameterEkstrakData', this)">
-                                        Kembali
-                                    </button>
-                                    <button type="button" class="btn btn-primary px-5 fw-bold">
-                                        SUBMIT
-                                    </button>
-                                </td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </form>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-
-
-
-  <!-- Modal Popup -->
-  <div class="modal fade" id="actionModal" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <h5 class="modal-title">Form Action</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-
-        <div class="modal-body">
-          <div class="mb-3">
-            <label class="form-label">Input 1</label>
-            <input type="text" class="form-control" placeholder="Masukkan input 1">
+          <div class="text-center border-bottom py-3">
+            <h2 class="fw-bold mb-0">
+              Parameter Database Staging
+            </h2>
           </div>
 
-          <div class="mb-3">
-            <label class="form-label">Input 2</label>
-            <input type="text" class="form-control" placeholder="Masukkan input 2">
-          </div>
+          <form>
+            <table class="table table-bordered mb-0 align-middle">
+              <tbody>
 
-          <div class="mb-3">
-            <label class="form-label">Input 3</label>
-            <input type="text" class="form-control" placeholder="Masukkan input 3">
-          </div>
-        </div>
+                <tr>
+                  <th style="width:35%">Database</th>
+                  <td>
+                    <input type="text" class="form-control" value="CBS.BKT.20260321">
+                  </td>
+                </tr>
 
-        <div class="modal-footer">
-          <button class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-          <button class="btn btn-primary">Simpan</button>
+                <tr>
+                  <th>Table</th>
+                  <td>
+                    <input type="text" class="form-control" value="MST_CIF">
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>Schedule</th>
+                  <td>
+                    <select class="form-select">
+                      <option value="">-- Pilih Schedule --</option>
+                      <option value="daily">Tiap Hari</option>
+                      <option value="workday">Hari Kerja</option>
+                      <option value="specific_date">Tanggal Tertentu</option>
+                    </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>Tanggal</th>
+                  <td>
+                    <input type="date" class="form-control">
+                    <small class="text-muted">
+                      Diisi jika Schedule adalah Tanggal Tertentu.
+                    </small>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>Metode Copy</th>
+                  <td>
+                    <select class="form-select">
+                      <option value="">-- Pilih Metode Copy --</option>
+                      <option value="replace">Replace</option>
+                      <option value="last_copied_date">Last Copied Date</option>
+                      <option value="detect_change">Detect Change</option>
+                    </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>Last Date Copied</th>
+                  <td>
+                    <input type="date" class="form-control">
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>Last Date Changed</th>
+                  <td>
+                    <input type="date" class="form-control">
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>Field to Detect Changed</th>
+                  <td>
+                    <select class="form-select">
+                      <option value="">-- Pilih Field --</option>
+                      <option value="DTUPD">DTUPD</option>
+                      <option value="CREATED_AT">CREATED_AT</option>
+                      <option value="UPDATED_AT">UPDATED_AT</option>
+                      <option value="LAST_MODIFIED">LAST_MODIFIED</option>
+                    </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>Unique Field</th>
+                  <td>
+                    <select class="form-select">
+                      <option value="">-- Pilih Unique Field --</option>
+                      <option value="CIFID">CIFID</option>
+                      <option value="IDNBR">IDNBR</option>
+                      <option value="ACCNBR">ACCNBR</option>
+                      <option value="CUSTOMER_ID">CUSTOMER_ID</option>
+                    </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td colspan="2" class="text-center p-3">
+                    <button type="button" class="btn btn-secondary px-4 fw-bold"
+                      onclick="showMenu('parameterEkstrakData', this)">
+                      Kembali
+                    </button>
+                    <button type="button" class="btn btn-primary px-5 fw-bold">
+                      SUBMIT
+                    </button>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </form>
+
         </div>
 
       </div>
+
     </div>
-  </div>
 
-  <script>
-    function showMenu(menuId, element) {
-      document.querySelectorAll('.page-section').forEach(section => {
-        section.classList.remove('active');
-      });
 
-      document.getElementById(menuId).classList.add('active');
 
-      document.querySelectorAll('.menu-item').forEach(item => {
-        item.classList.remove('active');
-      });
 
-      element.classList.add('active');
-    }
-  </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Modal Popup -->
+    <div class="modal fade" id="actionModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h5 class="modal-title">Form Action</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">Input 1</label>
+              <input type="text" class="form-control" placeholder="Masukkan input 1">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Input 2</label>
+              <input type="text" class="form-control" placeholder="Masukkan input 2">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Input 3</label>
+              <input type="text" class="form-control" placeholder="Masukkan input 3">
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            <button class="btn btn-primary">Simpan</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function showMenu(menuId, element) {
+        document.querySelectorAll('.page-section').forEach(section => {
+          section.classList.remove('active');
+        });
+
+        document.getElementById(menuId).classList.add('active');
+
+        document.querySelectorAll('.menu-item').forEach(item => {
+          item.classList.remove('active');
+        });
+
+        element.classList.add('active');
+      }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
