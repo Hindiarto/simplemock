@@ -112,6 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     <a class="menu-item active" onclick="showMenu('dashboard', this)">Dashboard</a> 
+    <a class="menu-item " data-menu="ruleGroup" onclick="showMenu('globalParameterList', this)"> Global Parameter</a>
     <a class="menu-item " data-menu="ruleGroup" onclick="showMenu('ruleGroupList', this)"> Daftar Grup Asesmen</a>
     <!-- <a class="menu-item" onclick="showMenu('menuB', this)">Rule</a> -->
     <a class="menu-item" data-menu="ruleB" onclick="showMenu('ruleList', this)"> Parameter Asesmen</a>
@@ -211,6 +212,97 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
 
     </div>
+
+    <!-- Daftar GLobal Parameter  -->
+    <div id="globalParameterList" class="page-section">
+      <div class="card p-4">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="mb-0">Global Parameter</h4>
+
+          <button class="btn btn-primary" onclick="showMenu('ruleGroupForm', this)">
+            + Parameter
+          </button>
+        </div>
+
+        <table class="table table-bordered align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>No</th>
+              <th>Kode Parameter</th>
+              <th>Keterangan</th>
+              <th>Value</th>
+              <th width="100">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+           <tr>
+              <td>1</td>
+              <td>PRCTIME</td>
+              <td>Jam dilakukan seluruh proses CA, mulai copy-ekstrak data hingga pembentukan tabel fakta</td>
+              <td>02:00</td>
+              <td>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" onclick="showMenu('globalParameterForm', this)">
+                  Edit
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>DATESTART</td>
+              <td>Penentuan tanggal acuan paling awal untuk dilakukan pemeriksaan.
+Ini berlaku untuk data data transaksional, setelah proses selesai, tanggal proses terakhir akan menjadi tanggal acuan selanjutnya.</td>
+              <td>2026-05-01</td>
+              <td>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" onclick="showMenu('globalParameterForm', this)">
+                  Edit
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+    <!-- Tambah Rule Group baru -->
+    <div id="globalParameterForm" class="page-section">
+      <div class="card p-4">
+
+        <h4 class="mb-4">Edit / Tambah Parameter</h4>
+
+        <div class="mb-3">
+          <label class="form-label">Kode Parameter</label>
+          <input type="text" class="form-control" placeholder="">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Keterangan</label>
+          <textarea class="form-control" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Value</label>
+          <textarea class="form-control" rows="3"></textarea>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button class="btn btn-secondary" onclick="showMenu('globalParameterList', this)">
+            Kembali
+          </button>
+
+          <button class="btn btn-primary">Simpan</button>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+
 
     <!-- Menu A -->
     <!-- Daftar Rule Group -->
