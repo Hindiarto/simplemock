@@ -262,16 +262,17 @@
                 </button>
               </td>
             </tr>
-         
+
             <tr>
               <td>3</td>
               <td>FREQ</td>
-              <td> 
-                Frukuensi proses Continuous Audit. Sistem akan secara otomatis dijalankan sesuai frekuensi. 
+              <td>
+                Frukuensi proses Continuous Audit. Sistem akan secara otomatis dijalankan sesuai frekuensi.
                 <br>
                 B = Bulanan, H = Harian
                 <br>
-                Apabila frekuensi B (bulanan), maka sistem akan dijalankan setiap awal bulan untuk tanggal hari kerja di bulan sebelumnya.
+                Apabila frekuensi B (bulanan), maka sistem akan dijalankan setiap awal bulan untuk tanggal hari kerja di
+                bulan sebelumnya.
                 Sedangkan frekuensi H (harian), maka sistem akan dijalankan setiap hari kerja sebelum hari ini.
               </td>
               <td>B</td>
@@ -424,8 +425,10 @@
               <th>Grup Asesmen</th>
               <th>Asesmen ID</th>
               <th>Keterangan</th>
+              <th>Kategori Pemeriksaan</th>
               <!-- <th>Jadwal</th>
               <th>Tanggal</th> -->
+
               <th width="160">Action</th>
             </tr>
           </thead>
@@ -436,6 +439,7 @@
               <td>CIF - Kategori Asesmen CIF</td>
               <td>CIF-001</td>
               <td>NIK yang sama digunakan pada >1 CIF</td>
+              <td>Kualitas Data</td>
               <!-- <td>Tiap Hari</td>
               <td>-</td> -->
               <td>
@@ -449,6 +453,7 @@
               <td>CIF - Kategori Asesmen CIF</td>
               <td>CIF-002</td>
               <td>NO HP yang sama digunakan pada >1 CIF</td>
+              <td>Kualitas Data</td>
               <!-- <td>Hari Kerja</td>
               <td>-</td> -->
               <td>
@@ -462,6 +467,7 @@
               <td>DEP - Kategori Asesmen Deposito</td>
               <td>DEP-001</td>
               <td>Melebihi bunga penjaminan LPS</td>
+              <td>Kualitas Data</td>
               <!-- <td>Tanggal Tertentu</td>
               <td>24 Juni 2026</td> -->
               <td>
@@ -495,6 +501,15 @@
         <div class="mb-3">
           <label class="form-label">ID Asesmen</label>
           <input type="text" class="form-control" placeholder="">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Kategori Pemeriksaan</label>
+          <select class="form-control">
+            <option value="">-- Pilih Kategori Pemeriksaan --</option>
+            <option value="CIF">Kualitas Data</option>
+            <option value="DEP">Pelanggaran Kontrol</option>
+          </select>
         </div>
 
         <div class="mb-3">
