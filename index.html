@@ -262,6 +262,28 @@
                 </button>
               </td>
             </tr>
+            kode parameter ketik aja FREQ, keterangannya Frekuensi proses Continuous Audit, 
+            jika bulanan, maka sistem otomatis dijalankan setiap awal bulan untuk tanggal hari kerja 
+            bulan sebelumnya
+            <tr>
+              <td>3</td>
+              <td>FREQ</td>
+              <td> 
+                Frukuensi proses Continuous Audit. Sistem akan secara otomatis dijalankan sesuai frekuensi. 
+                <br>
+                B = Bulanan, H = Harian
+                <br>
+                Apabila frekuensi B (bulanan), maka sistem akan dijalankan setiap awal bulan untuk tanggal hari kerja di bulan sebelumnya.
+                Sedangkan frekuensi H (harian), maka sistem akan dijalankan setiap hari kerja sebelum hari ini.
+              </td>
+              <td>B</td>
+              <td>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal"
+                  onclick="showMenu('globalParameterForm', this)">
+                  Edit
+                </button>
+              </td>
+            </tr>
           </tbody>
         </table>
 
@@ -815,7 +837,7 @@
                   </td>
                 </tr>
 
-                <tr>
+                <!-- <tr>
                   <th>Schedule</th>
                   <td>
                     <select class="form-select">
@@ -825,9 +847,9 @@
                       <option value="specific_date">Tanggal Tertentu</option>
                     </select>
                   </td>
-                </tr>
+                </tr> -->
 
-                <tr>
+                <!-- <tr>
                   <th>Tanggal</th>
                   <td>
                     <input type="date" class="form-control">
@@ -835,7 +857,7 @@
                       Diisi jika Schedule adalah Tanggal Tertentu.
                     </small>
                   </td>
-                </tr>
+                </tr> -->
 
                 <tr>
                   <th>Metode Copy</th>
